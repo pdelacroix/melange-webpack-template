@@ -1,0 +1,17 @@
+{
+  "name": "melange-project",
+  "dependencies": {
+    "@opam/ocaml-lsp-server": "*",
+    "melange": "melange-re/melange",
+    "npm": "^7.20.1",
+    "ocaml": "4.12.x"
+  },
+  "esy": {
+    "buildsInSource": "unsafe",
+    "build": [ "npm run build" ]
+  },
+  "scripts": {
+    "setup_melange": [ "ln -sfn #{melange.install} node_modules/bs-platform" ]
+  },
+  "installConfig": { "pnp": false }
+}
