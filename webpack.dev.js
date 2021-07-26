@@ -1,32 +1,10 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MelangeWebpackPlugin = require ('./melange-webpack-plugin')
+const { merge } = require('webpack-merge');
+const common = require('./webpack.common.js');
 
-module.exports = {
+module.exports = merge(common, {
   mode: 'development',
-  entry: {
-    index: './_build/default/src/Hello.bs.js'
-  },
   devtool: 'inline-source-map',
   devServer: {
-    host: '0.0.0.0',
-    //contentBase: './dist'
- },
-  plugins: [
-    new MelangeWebpackPlugin({
-			sourceDirs: [__dirname + '/src']
-    }),
-    new HtmlWebpackPlugin({
-      title: 'Melange basic template',
-    }),
-  ],
-  output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    clean: true,
-  },
-  stats: {
-    logging: 'error',
-    // loggingDebug: [/MelangeWebpackPlugin/]
+    host: '0.0.0.0'
   }
-};
+});
